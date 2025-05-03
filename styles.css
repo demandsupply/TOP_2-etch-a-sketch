@@ -1,6 +1,30 @@
 * {
     margin: none;
     padding: none;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
 }
 
+:root {
+    --custom-size: 800px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.container {
+    margin: auto;
+}
+
+.grid-container {
+    margin: auto;
+    border: 1px solid #000;
+    width: var(--custom-size);
+    height: var(--custom-size);
+    display: flex;
+    flex-wrap: wrap; 
+}
+
+.pixel {
+    /* border: 1px solid #000; */
+}
