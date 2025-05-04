@@ -1,6 +1,7 @@
 const grid = document.querySelector(".grid-container");
 const btn = document.querySelector(".btn");
 const pixelsPerSide = 16;
+let standardContainerSize = 800;
 console.log("start value: " + pixelsPerSide)
 
 
@@ -9,19 +10,51 @@ btn.addEventListener("click", () => {
     console.log(pixelsPerSide)
     if(isNaN(pixelsPerSide)) {
         alert("insert a number");
+        return;
     }
     if (pixelsPerSide < 1 || pixelsPerSide > 100) {
         alert("insert a number between 1 and 100");
+        return;
     }
     console.log("final value: " + pixelsPerSide)
+    let adjustedContainerSize = checkSizes(pixelsPerSide, standardContainerSize)
+    console.log("final container size: " + adjustedContainerSize)
+
     clearGrid(grid);
-    createGrid(pixelsPerSide);
+    grid.style.width = adjustedContainerSize + "px";
+    grid.style.height = adjustedContainerSize + "px";
+    createGrid(pixelsPerSide, adjustedContainerSize);
 
 })
 
-function createGrid(pixelsPerSide) {
+function checkSizes(divisor, dividend) {
+    if (dividend % divisor === 0) {
+        console.log("no remainder");
+        return dividend;
+    } else {
+        console.log(`${dividend} / ${divisor} is equal to ${dividend/divisor}`)
+        return obtainWidth(divisor, dividend);
+    }
+}
+
+function obtainWidth(divisor, dividend) {
+    let smallerDividend = dividend;
+    let biggerDividend = dividend;
+    while(true) {
+        if (biggerDividend % divisor === 0) {
+            console.log(`${biggerDividend} / ${divisor} is equal to ${biggerDividend/divisor}`)
+            return biggerDividend;
+        } else biggerDividend++;
+        if (smallerDividend % divisor === 0) {
+            console.log(`${smallerDividend} / ${divisor} is equal to ${smallerDividend/divisor}`)
+            return smallerDividend;
+        } else smallerDividend--;
+    }
+}
+
+function createGrid(pixelsPerSide, adjustedContainerSize) {
     let pixels = pixelsPerSide * pixelsPerSide;
-    let pixelSize = grid.clientWidth / pixelsPerSide;
+    let pixelSize = adjustedContainerSize / pixelsPerSide;
     console.log("grid size is " + pixelSize);
     
     for (let i = 0; i < pixels; i++) {
@@ -39,4 +72,4 @@ function clearGrid(grid) {
     grid.innerText = "";
 }
 
-createGrid(pixelsPerSide);
+createGrid(pixelsPerSide, standardContainerSize);
