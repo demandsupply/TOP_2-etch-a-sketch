@@ -24,6 +24,7 @@ btn.addEventListener("click", () => {
     grid.style.width = adjustedContainerSize + "px";
     grid.style.height = adjustedContainerSize + "px";
     createGrid(pixelsPerSide, adjustedContainerSize);
+    drawPixels(grid);
 
 })
 
@@ -68,8 +69,20 @@ function createGrid(pixelsPerSide, adjustedContainerSize) {
     }
 }
 
+function drawPixels(grid) {
+    const pixelsArray = grid.querySelectorAll("div");
+    pixelsArray.forEach((pixel) => {
+        pixel.addEventListener("mouseover", () => {
+            pixel.style.backgroundColor = "black";
+        })
+    })
+}
+
 function clearGrid(grid) {
     grid.innerText = "";
 }
 
+
+
 createGrid(pixelsPerSide, standardContainerSize);
+drawPixels(grid);
