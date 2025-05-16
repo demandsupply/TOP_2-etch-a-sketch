@@ -73,9 +73,14 @@ function drawPixels(grid) {
     const pixelsArray = grid.querySelectorAll("div");
     pixelsArray.forEach((pixel) => {
         pixel.addEventListener("mouseover", () => {
-            pixel.style.backgroundColor = "black";
+            // pixel.style.backgroundColor = "black";
+            pixel.style.backgroundColor = `rgb(${randomColor()}, ${randomColor()}, ${randomColor()})`;
         })
     })
+}
+
+function randomColor() {
+    return Math.floor(Math.random() * 255)
 }
 
 function clearGrid(grid) {

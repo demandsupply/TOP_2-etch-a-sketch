@@ -23,6 +23,7 @@ h1 {
     height: var(--custom-size);
     display: flex;
     flex-wrap: wrap; 
+    color: rgb(0, 0, 0);
 }
 
 .pixel {
