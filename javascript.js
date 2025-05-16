@@ -46,6 +46,7 @@ function obtainWidth(divisor, dividend) {
             console.log(`${biggerDividend} / ${divisor} is equal to ${biggerDividend/divisor}`)
             return biggerDividend;
         } else biggerDividend++;
+
         if (smallerDividend % divisor === 0) {
             console.log(`${smallerDividend} / ${divisor} is equal to ${smallerDividend/divisor}`)
             return smallerDividend;
