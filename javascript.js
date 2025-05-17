@@ -58,13 +58,17 @@ function createGrid(pixelsPerSide, adjustedContainerSize) {
     let pixels = pixelsPerSide * pixelsPerSide;
     let pixelSize = adjustedContainerSize / pixelsPerSide;
     console.log("grid size is " + pixelSize);
+
+    const showNumbers = pixelsPerSide <= 50;
     
     for (let i = 0; i < pixels; i++) {
         let pixel = document.createElement("div");
         pixel.style.width = `${pixelSize}px`;
         pixel.style.height = `${pixelSize}px`;
         pixel.style.backgroundColor = "yellow";
-        pixel.innerText = i + 1;
+        if (showNumbers) {
+            pixel.innerText = i + 1;
+        }
         pixel.classList.add("pixel");
         grid.appendChild(pixel);
     }
